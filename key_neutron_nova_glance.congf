@@ -1,0 +1,35 @@
+[[local|localrc]]
+ADMIN_PASSWORD=admin
+DATABASE_PASSWORD=$ADMIN_PASSWORD
+RABBIT_PASSWORD=$ADMIN_PASSWORD
+SERVICE_PASSWORD=$ADMIN_PASSWORD
+SERVICE_TOKEN=$ADMIN_PASSWORD
+
+RECLONE=false
+
+# disable everything!
+disable_all_services
+
+# using rabbit as RPC backend
+enable_service rabbit
+
+# using mysql as BD backend
+enable_service mysql
+
+# cinder
+#enable_service cinder c-api c-vol c-sch
+
+# keystone is required
+enable_service key
+
+# horizon is more handy way to manage cloud
+#enable_service horizon
+
+# all required neutron services
+enable_service q-svc q-dhcp q-l3 q-agt q-meta
+
+# all required nova services
+enable_service n-api n-cpu n-cond n-sch
+
+# glance required for boot instances
+enable_service g-reg g-api
